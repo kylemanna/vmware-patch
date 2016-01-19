@@ -1,0 +1,28 @@
+From e6cfe37864f0aaf9a1a8fcbbe9cde8cddac971ad Mon Sep 17 00:00:00 2001
+From: Kyle Manna <kyle@kylemanna.com>
+Date: Mon, 18 Jan 2016 23:05:47 -0800
+Subject: [PATCH] vmmon: misc_deregister() doesn't return a value
+
+* Ignored as expected, otherwise compiler error.
+---
+ linux/driver.c | 4 +---
+ 1 file changed, 1 insertion(+), 3 deletions(-)
+
+diff --git a/linux/driver.c b/linux/driver.c
+index 31de1dc..f2d97ae 100644
+--- vmmon-only/linux/driver.c
++++ vmmon-only/linux/driver.c
+@@ -387,9 +387,7 @@ cleanup_module(void)
+ #ifdef VMX86_DEVEL
+    unregister_chrdev(linuxState.major, linuxState.deviceName);
+ #else
+-   if (misc_deregister(&linuxState.misc)) {
+-      Warning("Module %s: error unregistering\n", linuxState.deviceName);
+-   }
++   misc_deregister(&linuxState.misc);
+ #endif
+ 
+    Log("Module %s: unloaded\n", linuxState.deviceName);
+-- 
+2.7.0
+

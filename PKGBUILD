@@ -3,7 +3,7 @@
 
 pkgname=vmware-patch
 pkgver=12.0.0
-pkgrel=4
+pkgrel=5
 pkgdesc="A post-install configuration solution for VMware Workstation (Pro) and Player (Plus and Pro)"
 arch=('i686' 'x86_64')
 url="https://wiki.archlinux.org/index.php/VMware#Configuration"
@@ -13,6 +13,7 @@ options=('!emptydirs')
 install=$pkgname.install
 source=('vmware-patch.sh' 'vmware-unpatch.sh' 'common-functions.sh' 'vmware.service' 'vmware-usbarbitrator.service' 'vmware-workstation.service'
         # Workstation Pro/Player 12.0.0
+        'vmmon-12.0.0-5.1.patch'
         'vmci-12.0.0-4.2.patch'
         # Workstation 11.1.2 / Player (Pro) 7.1.2
         'vmblock-11.1.2-4.2.patch'
@@ -63,6 +64,7 @@ md5sums=('1fe73e49d253eeba8be2c9d066cf42cb'
          'c12e765985b324585a548718a6ac9b43'
          'ea3817fb7952932707bfedcf33a70697'
          '56f7f642683e54250372bb57faaf4e95'
+         '611761a6f1cf08592c3e25574c883517'
          '133f3ba5c19ceb00a4ae8f44dc08352a'
          '36727e319ce5379e5227f618401fd313'
          '905d6daa87b314e541eec00ca4f927c6'
